@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Helper\Ui\FlashMessageGenerator;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -73,5 +75,14 @@ class RegisterController extends Controller
         $user->assignRole('Admin');
 
         return $user;
+    }
+
+    // Add this method to prevent auto-login after registration
+    protected function registered(Request $request, $user)
+    {
+        $this->guard()->logout();
+
+        FlashMessageGenerator::generate('success', 'Please check your email and click on the link to verify your account.');
+        return redirect()->route('login');
     }
 }

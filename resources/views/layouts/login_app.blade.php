@@ -27,6 +27,7 @@
 {{-- <body style="background: url('{{ asset('public/login.jpg') }}'); background-repeat:no-repeat;background-size: cover;"> --}}
 <body style="">
     <div id="app">
+        @include('dashboard.layouts.partials.error')
         <nav class="navbar navbar-expand-md navbar-light bg-none shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
