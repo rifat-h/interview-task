@@ -42,7 +42,7 @@ Route::get('/', HomePage::class)->name('front.index');
 
 
 // ------------ dashboard start ----------
-Route::prefix('dashboard')->middleware(['auth', 'withMenu', 'authorizationChecker'])->group(function () {
+Route::prefix('dashboard')->middleware(['auth', 'email_verified', 'withMenu', 'authorizationChecker'])->group(function () {
 
     // dashboard
     Route::get('/', [HomeController::class, 'index'])->name('home');

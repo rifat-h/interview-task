@@ -2,8 +2,8 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\MenuMiddleware;
 use App\Http\Middleware\SiteSettingMiddleWare;
+use App\Http\Middleware\EmailVerifiedMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'withMenu' => \App\Http\Middleware\MenuMiddleware::class,
         'authorizationChecker' => \App\Http\Middleware\AuthorizationMiddleware::class,
+        'email_verified' => EmailVerifiedMiddleware::class,
     ];
 }
