@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 26, 2022 at 05:38 AM
+-- Generation Time: Jul 17, 2024 at 06:39 PM
 -- Server version: 8.0.30
--- PHP Version: 7.4.32
+-- PHP Version: 8.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `laravel`
+-- Database: `structure`
 --
 
 -- --------------------------------------------------------
@@ -89,7 +89,8 @@ CREATE TABLE `model_has_roles` (
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(1, 'App\\Models\\User', 1);
+(1, 'App\\Models\\User', 1),
+(6, 'App\\Models\\User', 2);
 
 -- --------------------------------------------------------
 
@@ -116,8 +117,8 @@ CREATE TABLE `permissions` (
   `action_menu` int UNSIGNED DEFAULT NULL,
   `url` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icon` text COLLATE utf8mb4_unicode_ci,
-  `icon_color` text COLLATE utf8mb4_unicode_ci,
+  `icon` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `icon_color` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `guard_name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -171,7 +172,8 @@ INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VAL
 (2, 'Admin', 'web', '2021-11-13 04:37:14', '2021-11-13 04:37:14'),
 (3, 'Author', 'web', '2021-11-13 04:37:14', '2021-11-13 04:37:14'),
 (4, 'Manager', 'web', '2021-11-13 04:37:14', '2021-11-13 04:37:14'),
-(5, 'contributor', 'web', '2021-11-13 04:37:14', '2021-11-13 04:37:14');
+(5, 'contributor', 'web', '2021-11-13 04:37:14', '2021-11-13 04:37:14'),
+(6, 'Frontend', 'web', '2024-07-17 18:37:49', '2024-07-17 18:37:49');
 
 -- --------------------------------------------------------
 
@@ -207,7 +209,8 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (16, 1),
 (17, 1),
 (18, 1),
-(19, 1);
+(19, 1),
+(8, 6);
 
 -- --------------------------------------------------------
 
@@ -253,7 +256,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Rifat Hossain', 'rifat@email.com', NULL, '$2y$10$WyqOlhZTAjqYD0GZjaiGNu51EAty0AGrpENHuz6iwylld7KC/Wj.a', 1, NULL, '2021-11-13 04:37:15', '2021-11-13 04:37:15');
+(1, 'Rifat Hossain', 'rifat@email.com', '2024-07-17 18:36:26', '$2y$10$WyqOlhZTAjqYD0GZjaiGNu51EAty0AGrpENHuz6iwylld7KC/Wj.a', 1, NULL, '2021-11-13 04:37:15', '2024-07-17 18:36:26'),
+(2, 'Graham Sweeney', 'guvuxonide@mailinator.com', '2024-07-17 18:37:14', '$2y$10$AueYk7/56Wytr0raUebNoOoZmQCLk7WITCT2l8.112.SAJgoNmc9S', 1, 'YJx6m8wWeG1PXJZjUYIoDmGM3cEV5yeOIq0s53MjwNhPvWxa3WZHrhQhJl5e', '2024-07-17 18:37:06', '2024-07-17 18:37:14');
 
 --
 -- Indexes for dumped tables
@@ -350,7 +354,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `site_settings`
@@ -362,7 +366,7 @@ ALTER TABLE `site_settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

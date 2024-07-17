@@ -24,7 +24,7 @@ use App\Livewire\HomePage;
 Auth::routes([
     'register' => true,
     'verify' => true,
-    'reset' => false,
+    'reset' => true,
     'confirm' => false,
     'confirm-password' => false,
 ]);
@@ -42,7 +42,7 @@ Route::get('/', HomePage::class)->name('front.index');
 
 
 // ------------ dashboard start ----------
-Route::prefix('dashboard')->middleware(['auth', 'email_verified', 'withMenu', 'authorizationChecker'])->group(function () {
+Route::prefix('dashboard')->middleware(['auth', 'email_verified', 'user_enabled', 'frontend_user', 'withMenu', 'authorizationChecker'])->group(function () {
 
     // dashboard
     Route::get('/', [HomeController::class, 'index'])->name('home');

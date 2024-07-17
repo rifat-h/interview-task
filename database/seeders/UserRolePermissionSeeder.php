@@ -67,7 +67,7 @@ class UserRolePermissionSeeder extends Seeder
         $this->permissionGenerator('site_setting', ['update'], 9, 1);
 
         // roles
-        $roles = ['Software Admin', 'Admin', 'Author', 'Manager', 'contributor'];
+        $roles = ['Software Admin', 'Admin', 'Author', 'Manager', 'contributor', "Frontend"];
 
         foreach ($roles as $role) {
             Role::create([
@@ -84,6 +84,7 @@ class UserRolePermissionSeeder extends Seeder
             'name' => "Rifat Hossain",
             'email' => "rifat@email.com",
             'password' => Hash::make("123456789"),
+            'email_verified_at' => "2024-07-18 00:27:29"
         ]);
 
         $user->syncRoles('Software Admin');
